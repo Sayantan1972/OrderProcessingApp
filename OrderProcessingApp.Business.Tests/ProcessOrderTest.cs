@@ -49,5 +49,20 @@ namespace OrderProcessingApp.Business.Tests
             Assert.Equal(10, result.Discount);
             Assert.Equal(90, result.FinalAmount);
         }
+
+        [Fact]
+        public void WhenAmountIs100_And_CustomerTypeISNewl_DiscountNOTGiven()
+        {
+            //Arrange Data
+            var order = new Order() { CustomerType = "New", OrderTotal = 100 };
+            IProcessOrder processOrder = new ProcessOrder();
+
+            //ACT
+            var result = processOrder.ProcessCustomerOrder(order);
+
+            //Verify or Assert
+            Assert.Equal(0, result.Discount);
+            Assert.Equal(100, result.FinalAmount);
+        }
     }
 }
