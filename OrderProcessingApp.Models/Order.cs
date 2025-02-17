@@ -8,4 +8,10 @@
 
         public string CustomerType { get; set; }
     }
+
+    public enum CustomerType
+    {
+        Loyal,
+        New
+    }
 }

@@ -1,17 +1,19 @@
 ﻿using OrderProcessingApp.Models;
+using System.Data;
 
 namespace OrderProcessingApp.Business
 {
     public class ProcessOrder : IProcessOrder
     {
         private const decimal DISCOUNT = .10m;
-        public ProcessResults ProcessOrderAsync(Order order)
+        public ProcessResults ProcessCustomerOrder(Order order)
         {
             var result = new ProcessResults();
             try
             {
+               
                 decimal discountAmount = 0;
-                if (order.OrderTotal >= 100 && order.CustomerType == "Loyal")
+                if (order.OrderTotal >= 100 && order.CustomerType == CustomerType.Loyal.ToString())
                 {
                     discountAmount = order.OrderTotal * DISCOUNT;
                 }

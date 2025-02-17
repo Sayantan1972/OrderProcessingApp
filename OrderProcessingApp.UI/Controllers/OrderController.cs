@@ -21,12 +21,19 @@ namespace OrderProcessingApp.Controllers
         public IActionResult ProcessOrder(Order order)
         {
 
-            var results =  _processOrder.ProcessOrderAsync(order);
+            var results =  _processOrder.ProcessCustomerOrder(order);
+            if (results.Errors.Count > 0)
+            {
+                return View("Error");
+            }
+            else
+            {
+                ViewBag.OrderAmount = results.OrderTotal;
+                ViewBag.CustomerType = results.CustomerType;
+                ViewBag.Discount = results.Discount;
+                ViewBag.FinalAmount = results.FinalAmount;
+            }
 
-            ViewBag.OrderAmount = results.OrderTotal;
-            ViewBag.CustomerType = results.CustomerType;
-            ViewBag.Discount = results.Discount;
-            ViewBag.FinalAmount = results.FinalAmount;
 
             return View("Result");
         }

@@ -9,6 +9,6 @@ namespace OrderProcessingApp.Business
 {
     public interface IProcessOrder
     {
-        ProcessResults ProcessOrderAsync(Order order);
+        ProcessResults ProcessCustomerOrder(Order order);
     }
 }

@@ -22,4 +22,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OrderProcessingApp.Business\OrderProcessingApp.Business.csproj" />
+    <ProjectReference Include="..\OrderProcessingApp.Models\OrderProcessingApp.Models.csproj" />
+  </ItemGroup>
+
 </Project>
