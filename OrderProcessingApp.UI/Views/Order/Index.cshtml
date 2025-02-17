@@ -1,10 +1,12 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Order Entry";
 }
 <h2>Enter Order Details</h2>
+
 <form method="post" action="/Order/ProcessOrder">
     <label>Order Amount:</label>
-    <input type="number" name="OrderTotal" required />
+    <input type="text" id="orderTotal" name="OrderTotal" required autocomplete="off" />
     <br />
     <label>Customer Type:</label>
     <select name="CustomerType">
@@ -14,3 +16,36 @@
     <br />
     <button type="submit">Submit Order</button>
 </form>
+
+<script>
+    document.getElementById("orderTotal").addEventListener("input", function (e) {
+        let val = e.target.value;
+
+        // Remove negative signs
+        if (val.includes("-")) {
+            val = val.replace("-", "");
+        }
+
+        // Prevent starting with "."
+        if (val.startsWith(".")) {
+            val = "0" + val; // Automatically add "0" before "."
+        }
+
+        // Prevent multiple dots
+        let parts = val.split(".");
+        if (parts.length > 2) {
+            val = parts[0] + "." + parts[1]; // Keep only the first decimal part
+        }
+
+        // Limit to two decimal places
+        if (parts.length === 2 && parts[1].length > 2) {
+            val = parts[0] + "." + parts[1].substring(0, 2);
+        }
+
+        // Prevent letters or other invalid characters
+        val = val.replace(/[^0-9.]/g, '');
+
+        // Set the value back to the input field
+        e.target.value = val;
+    });
+</script>
