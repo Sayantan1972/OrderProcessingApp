@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Order Entry";
+}
+<h2>Enter Order Details</h2>
+<form method="post" action="/Order/ProcessOrder">
+    <label>Order Amount:</label>
+    <input type="number" name="OrderTotal" required />
+    <br />
+    <label>Customer Type:</label>
+    <select name="CustomerType">
+        <option value="New">New</option>
+        <option value="Loyal">Loyal</option>
+    </select>
+    <br />
+    <button type="submit">Submit Order</button>
+</form>
