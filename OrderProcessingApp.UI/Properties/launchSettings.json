@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "https": {
+    "OrderProcessingApp": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

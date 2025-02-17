@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Order Summary";
+}
+<h2>Order Summary</h2>
+<p>Order Amount: $@ViewBag.OrderAmount</p>
+<p>Customer Type: @ViewBag.CustomerType</p>
+<p>Discount Applied: $@ViewBag.Discount</p>
+<p>Final Amount: $@ViewBag.FinalAmount</p>
+<a href="/Order/Index">Place Another Order</a>
